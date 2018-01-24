@@ -1,0 +1,1 @@
+﻿var BookMyTableApp = angular.module('bookMyTable', []);

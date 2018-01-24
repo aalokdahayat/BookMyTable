@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bookmytableModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddTableBookAndMenuOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_intHotelId" Type="int" Mode="In" />
+          <Parameter Name="P_intDishID" Type="int" Mode="In" />
+          <Parameter Name="P_dcmlTotalAmt" Type="decimal" Mode="In" />
+          <Parameter Name="p_vchApprovalName" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchCustomerName" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchPhoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchLastname" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchEmailID" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchCity" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchCountry" Type="varchar" Mode="In" />
+          <Parameter Name="p_vchAddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetHotelMenuDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HotelId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetRestaurantsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Vch_IsActive" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetRestaurantsTablesDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HotelId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="bookmytableModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bookmytableModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bookmytableEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="AddTableBookAndMenuOrder" ReturnType="Collection(bookmytableModel.AddTableBookAndMenuOrder_Result)">
+            <Parameter Name="p_intHotelId" Mode="In" Type="Int32" />
+            <Parameter Name="P_intDishID" Mode="In" Type="Int32" />
+            <Parameter Name="P_dcmlTotalAmt" Mode="In" Type="Decimal" />
+            <Parameter Name="p_vchApprovalName" Mode="In" Type="String" />
+            <Parameter Name="p_vchCustomerName" Mode="In" Type="String" />
+            <Parameter Name="p_vchPhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="p_vchLastname" Mode="In" Type="String" />
+            <Parameter Name="p_vchEmailID" Mode="In" Type="String" />
+            <Parameter Name="p_vchCity" Mode="In" Type="String" />
+            <Parameter Name="p_vchCountry" Mode="In" Type="String" />
+            <Parameter Name="p_vchAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetHotelMenuDetails" ReturnType="Collection(bookmytableModel.Sp_GetHotelMenuDetails_Result)">
+            <Parameter Name="HotelId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetRestaurantsDetails" ReturnType="Collection(bookmytableModel.Sp_GetRestaurantsDetails_Result)">
+            <Parameter Name="Vch_IsActive" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetRestaurantsTablesDetails" ReturnType="Collection(bookmytableModel.Sp_GetRestaurantsTablesDetails_Result)">
+            <Parameter Name="HotelId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AddTableBookAndMenuOrder_Result">
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="Int32" Name="Column3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetHotelMenuDetails_Result">
+          <Property Type="Int32" Name="HotelId" Nullable="false" />
+          <Property Type="String" Name="HotelName" Nullable="true" MaxLength="550" />
+          <Property Type="Int32" Name="MenuID" Nullable="false" />
+          <Property Type="String" Name="MenuName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="MenuDescription" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="IsVeg" Nullable="true" />
+          <Property Type="Int32" Name="IsAvailable" Nullable="true" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetRestaurantsDetails_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="HotelName" Nullable="true" MaxLength="550" />
+          <Property Type="String" Name="ContactPersoneName" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="Rating" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="OpenintHours" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetRestaurantsTablesDetails_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="HotelName" Nullable="true" MaxLength="550" />
+          <Property Type="Int32" Name="TotalTable" Nullable="true" />
+          <Property Type="Int32" Name="TableCapacity" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bookmytableModelStoreContainer" CdmEntityContainer="bookmytableEntities" >
+          <FunctionImportMapping FunctionImportName="AddTableBookAndMenuOrder" FunctionName="bookmytableModel.Store.AddTableBookAndMenuOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bookmytableModel.AddTableBookAndMenuOrder_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetHotelMenuDetails" FunctionName="bookmytableModel.Store.Sp_GetHotelMenuDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bookmytableModel.Sp_GetHotelMenuDetails_Result">
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuDescription" ColumnName="MenuDescription" />
+                <ScalarProperty Name="IsVeg" ColumnName="IsVeg" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetRestaurantsDetails" FunctionName="bookmytableModel.Store.Sp_GetRestaurantsDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bookmytableModel.Sp_GetRestaurantsDetails_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="ContactPersoneName" ColumnName="ContactPersoneName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="OpenintHours" ColumnName="OpenintHours" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetRestaurantsTablesDetails" FunctionName="bookmytableModel.Store.Sp_GetRestaurantsTablesDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bookmytableModel.Sp_GetRestaurantsTablesDetails_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="TotalTable" ColumnName="TotalTable" />
+                <ScalarProperty Name="TableCapacity" ColumnName="TableCapacity" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

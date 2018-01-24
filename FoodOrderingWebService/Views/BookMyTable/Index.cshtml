@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="left_100" >
+    <div id="property-listings" class="left_100">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="float: left;">Hotel Listings</h1>
+
+                <div class="input-group search-bar-custom">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon">
+
+                        <span class="fa fa-search"></span>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" ng-repeat="item in records">
+                    <div class="media">
+                        <a target="_parent" href="#" class="pull-left">
+                            <img src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg" class="img-responsive" alt="image">
+                        </a>
+
+                        <div class="clearfix visible-sm"></div>
+
+                        <div class="media-body fnt-smaller">
+                            <a target="_parent" href="#"></a>
+
+                            <h4 class="media-heading">
+                                <a target="_parent" href="#">{{item.HotelName }} </a>
+                            </h4>
+
+
+                            <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                <li>Opening Hrs : {{item.OpenintHours}}</li>
+                                <li style="list-style: none">|</li>
+                                <li>Total Tables : 10</li>
+
+                                <li style="list-style: none">|</li>
+
+                                <li>Remaining Tables : {{item.TableAvailable}}</li>
+
+                            </ul>
+                            <i class="fa fa-map-marker map-ico-address"></i>
+                            <p class="hidden-xs">
+                               {{item.Address}},{{item.City}},{{item.Country }}
+                            </p>
+                            <div class="left_100">
+                                <div class="star-rating-outer">
+                                    <div class="fa fa-star star-ico-custom"></div>
+                                    <div class="fa fa-star star-ico-custom"></div>
+                                    <div class="fa fa-star star-ico-custom"></div>
+                                    <div class="fa fa-star star-ico-custom"></div>
+                                    <div class="fa fa-star star-ico-custom"></div>
+                                </div>
+                                <button class="btn btn-primary book-btn" ng-click="BookTable(item)" >Book</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div><!-- End row -->
+    </div><!-- End container -->
+</div>
+
